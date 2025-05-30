@@ -3,17 +3,22 @@ import restart from "../../assets/restart.svg"
 
 import styles from "./styles.module.css"
 
+type Props = {
+  current: number
+  max: number
+  onRestart: () => void
+}
 
-export function Header(){
+export function Header({current,max,onRestart}:Props){
   return(
     <div className={styles.container}>
       <img src={logo} alt="logo" />
       <header>
         <span>
-          <strong>5</strong> 10 tentativas
+          <strong>{current}</strong> de {max} tentativas
         </span>
 
-        <button type="button">
+        <button type="button" onClick={onRestart}>
           <img src={restart} alt="ícone de reiniciar" />
         </button>
       </header>
