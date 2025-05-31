@@ -17,6 +17,5 @@ export const WORDS: challenge[] = [
     {id: 10, word: "Python", tip: "Linguagem de programação versátil"},
     {id: 11, word: "Django", tip: "Framework web para Python"},
     {id: 12, word: "Flask", tip: "Microframework para Python"},
-
 ]
 

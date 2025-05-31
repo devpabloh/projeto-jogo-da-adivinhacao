@@ -5,6 +5,8 @@ import { Header } from './components/Header'
 import { Letters } from './components/Letters'
 import { Tip } from './components/Tip'
 import { Input } from './components/Input'
+import { Button } from './components/Button'
+import {LettersUsed} from "./components/LettersUsed"
 
 function App() {
   function handleRestartGame (){
@@ -24,9 +26,12 @@ function App() {
           <Letters value="t"/>
         </div>
         <h4>Palpite</h4>
-        <div>
+        <div className={styles.guess}>
           <Input autoFocus maxLength={1} placeholder='?'/>
+          <Button title='Confirmar'/>
         </div>
+
+        <LettersUsed/>
       </main>
     </div>
   )
