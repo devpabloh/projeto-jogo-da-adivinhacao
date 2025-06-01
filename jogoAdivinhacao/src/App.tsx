@@ -3,6 +3,7 @@ import styles from './app.module.css'
 /* Hooks */
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useRef } from 'react'
 
 /* Utils */
 import { WORDS, type Challenge } from './utils/words'
@@ -20,6 +21,8 @@ function App() {
   const [letter, setLetter] = useState("")
   const [challenger, setChallenge] = useState<Challenge | null>(null)
   const [letterUsed, setLetterUsed] = useState<LettersUsedProps[]>([])
+
+  const inputRef = useRef<HTMLInputElement>(null)
 
   function handleRestartGame (){
     alert("Reiniciar o jogo")
@@ -43,6 +46,21 @@ function App() {
     if(!letter.trim()){
       return alert("Digite uma letra")
     }
+
+    const value = letter.toLocaleUpperCase()
+
+    const exists = letterUsed.find(
+      (used)=> used.value.toLocaleUpperCase() === value)
+
+    if(exists){
+      return alert("Você já utilizou essa letra!")
+    }
+
+    setLetterUsed((prevState) => [...prevState, {value, correct: false}])
+
+    setLetter("")
+
+    inputRef.current?.focus()
   }
 
   useEffect(()=>{
@@ -68,9 +86,12 @@ function App() {
         <h4>Palpite</h4>
 
         <div className={styles.guess}>
-          <Input autoFocus 
+          <Input
+            ref={inputRef} 
+            autoFocus 
             maxLength={1} 
             placeholder='?' 
+            value={letter}
             onChange={(e)=>setLetter(e.target.value)}
           />
           <Button title='Confirmar' onClick={handledConfirm}/>
