@@ -35,6 +35,16 @@ function App() {
     setLetter("")
   }
 
+  function handledConfirm(){
+    if(!challenger){
+      return 
+    }
+
+    if(!letter.trim()){
+      return alert("Digite uma letra")
+    }
+  }
+
   useEffect(()=>{
     startGame()
   },[])
@@ -58,8 +68,12 @@ function App() {
         <h4>Palpite</h4>
 
         <div className={styles.guess}>
-          <Input autoFocus maxLength={1} placeholder='?'/>
-          <Button title='Confirmar'/>
+          <Input autoFocus 
+            maxLength={1} 
+            placeholder='?' 
+            onChange={(e)=>setLetter(e.target.value)}
+          />
+          <Button title='Confirmar' onClick={handledConfirm}/>
         </div>
 
         <LettersUsed data={letterUsed}/>
