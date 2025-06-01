@@ -9,7 +9,7 @@ export const WORDS: Challenge[] = [
     {id: 2, word: "HTML", tip: "Linguagem de marcação"},
     {id: 3, word: "JavaScript", tip: "Linguagem de programação"},
     {id: 4, word: "React", tip: "Biblioteca JavaScript para interfaces web"},
-    {id: 5, word: "Node.js", tip: "Ambiente de execução JavaScript no servidor"},
+    {id: 5, word: "Node", tip: "Ambiente de execução JavaScript no servidor"},
     {id: 6, word: "TypeScript", tip: "Superset do JavaScript com tipagem estática"},
     {id: 7, word: "Express", tip: "Framework para Node.js"},
     {id: 8, word: "MongoDB", tip: "Banco de dados NoSQL"},

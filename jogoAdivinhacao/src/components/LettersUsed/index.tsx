@@ -18,7 +18,7 @@ export function LettersUsed ({data}:Props){
             <div>
                 {
                     data.map(({value, correct})=>(
-                        <Letters value={value} size="small" color={correct? "correct" : "wrong"}/> 
+                        <Letters key={value} value={value} size="small" color={correct? "correct" : "wrong"}/> 
                     ))
                 }
             </div>
