@@ -22,6 +22,7 @@ function App() {
   const [letter, setLetter] = useState("")
   const [challenger, setChallenge] = useState<Challenge | null>(null)
   const [letterUsed, setLetterUsed] = useState<LettersUsedProps[]>([])
+  const [ shake, setShake] = useState(false)
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -77,6 +78,11 @@ function App() {
 
     setLetter("")
 
+    if(!correct){
+      setShake(true)
+      setTimeout(()=> setShake(false), 300)
+    }
+
     inputRef.current?.focus()
   }
 
@@ -118,7 +124,7 @@ function App() {
         <Header current={letterUsed.length} max={challenger.word.length + ATTEMPTS_MARGIN} onRestart={handleRestartGame}/>
         <Tip tip={challenger.tip}/>
 
-        <div className={styles.word}>
+        <div className={`${styles.word} ${shake && styles.shake}`}>
           {challenger.word.split("").map((letter, index)=> {
             const usedLetter = letterUsed.find((used) => used.value.toUpperCase() === letter.toUpperCase())
 
